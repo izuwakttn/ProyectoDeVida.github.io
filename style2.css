@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,100,400,500,600,700,800,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+section {
+    width: 100%;
+    padding: 150px 20px 50px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+}
+
+.circulo{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: silver;
+    clip-path: circle(700px at right 900px);
+}
+
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 50px auto 0 auto;
+    max-width: 500px;
+}
+
+.stats-cont{
+    padding: 30px;
+    border-radius: 10px;
+    border: 2px solid #96CEB8;
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    width: 100%;
+}
+
+.detalles{
+    width: 100%;
+}
+
+#progresoBar{
+    width: 100%;
+    height: 10px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+#progreso{
+    width: 0%;
+    height: 10px;
+    background-color: #a9e2e7;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+#num{
+    width: 100px;
+    height: 100px;
+    background-color: #a9e2e7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+form{
+    margin-top: 60px;
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+input{
+    flex: 1px;
+    padding: 10px;
+    background: #f4f4f4;
+    border: 1px solid #96CEB8;
+    border-radius: 10px;
+    outline: none;
+    color: #89afa2;
+}
+
+.tarbtn{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #96CEB8;
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+    outline: none;
+    border: none;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.tarbtn:hover {
+    background: #a9e2e7;
+}
+
+.taskItem{
+    display: flex;
+    background-color: #e8faf3;
+    padding: 10px;
+    border-radius: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lista-tareas{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 30px;
+    width: 100%;
+    list-style: none;
+}
+
+.taskItem img{
+    width: 24px;
+    height: 24px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.task{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.task input{
+    width: 20px;
+    height: 20px;
+}
+
+.completed p{
+    text-decoration: line-through;
+    color: #89afa2;
+}
+
+ /* Mensaje de bienvenida estilo */ 
+
+#welcome-message {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.guardarbtn{
+    width: 190px;
+    height: 50px;
+    margin: 20px auto 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #96CEB8 ;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.guardarbtn:hover {
+    background: #a9e2e7;
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto de Vida</title>
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="style3.css" />
+</head>
+<body>
+    <section>
+        
+        <header>
+            <a href="#" class="logo"><img src="logoh.jpeg" alt="Logotipo de la pagina" width="150px"/></a>
+            
+            <ul>
+                <li>
+                    <a href="#">Como usarlo</a>
+                </li>
+                <li>
+                    <a href="Dashboard.html">Realizar Reporte</a>
+                </li>
+                <li>
+                    <a href="Calendar.html">Calendario de Racha</a>
+                </li>
+
+                <li>
+                    <button class="button" id="logout-btn">
+                        <span class="button_lg">
+                            <span class="button_sl"></span>
+                            <span class="button_text">Cerrar Sesion</span>
+                        </span>
+                    </button>
+                </li>
+            </ul>
+        </header>
+
+        <!-- Aquí va el mensaje de bienvenida -->
+        <div id="welcome-message">
+            Cargando...
+        </div>
+
+
+         <div class="container">
+      <div class="calendar">
+        <div class="calendar-header">
+          <span class="month-picker" id="month-picker"> May </span>
+          <div class="year-picker" id="year-picker">
+            <span class="year-change" id="pre-year">
+              <pre><</pre>
+            </span>
+            <span id="year">2020 </span>
+            <span class="year-change" id="next-year">
+              <pre>></pre>
+            </span>
+          </div>
+        </div>
+ 
+        <div class="calendar-body">
+          <div class="calendar-week-days">
+            <div>Sun</div>
+            <div>Mon</div>
+            <div>Tue</div>
+            <div>Wed</div>
+            <div>Thu</div>
+            <div>Fri</div>
+            <div>Sat</div>
+          </div>
+          <div class="calendar-days">
+          </div>
+        </div>
+        <div class="calendar-footer">
+        </div>
+        <div class="date-time-formate">
+          <div class="day-text-formate">TODAY</div>
+          <div class="date-time-value">
+            <div class="time-formate">02:51:20</div>
+            <div class="date-formate">23 - july - 2022</div>
+          </div>
+        </div>
+        <div class="month-list"></div>
+      </div>
+    </div>
+    </section>
+
+    <!-- Firebase y lógica de sesión -->
+<script type="module" src="firebase-init.js"></script>
+
+<!-- Lógica de bienvenida y cerrar sesión -->
+<script type="module">
+    import { auth } from './firebase-init.js';
+    import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-auth.js";
+
+    const welcomeDiv = document.getElementById('welcome-message');
+    const logoutBtn = document.getElementById('logout-btn');
+
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            welcomeDiv.innerHTML = `Hola, personita 👋<br>
+            <span style="font-size: 1rem; font-weight: 400; color: silver;">${user.email}</span>`;
+        } else {
+            window.location.href = 'inicioSesion.html';
+        }
+    });
+
+    logoutBtn.addEventListener('click', async () => {
+        try {
+            await signOut(auth);
+            alert('Sesión cerrada exitosamente');
+            window.location.href = 'IndexBlog.html';
+        } catch (error) {
+            alert('Error al cerrar sesión: ' + error.message);
+        }
+    });
+</script>
+
+<!-- Script principal de calendario -->
+<script type="module" src="calendar.js"></script>
+</body>
+</html>

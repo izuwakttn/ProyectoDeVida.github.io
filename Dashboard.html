@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Proyecto de Vida</title>
+    <link rel="stylesheet" href="header.css" />
+    <link rel="stylesheet" href="style2.css" />
+</head>
+<body>
+    <input type="checkbox" id="internoCompleto" style="display: none;">
+
+    <section>
+
+        <div class="circulo"></div>
+        
+        <header>
+            <a href="#" class="logo"><img src="logoh.jpeg" alt="Logotipo de la pagina" width="150px"/></a>
+            
+            <ul>
+                <li>
+                    <a href="#">Como usarlo</a>
+                </li>
+                <li>
+                    <a href="Dashboard.html">Realizar Reporte</a>
+                </li>
+                <li>
+                    <a href="Calendar.html">Calendario de Racha</a>
+                </li>
+
+                <li>
+                    <button class="button" id="logout-btn">
+                        <span class="button_lg">
+                            <span class="button_sl"></span>
+                            <span class="button_text">Cerrar Sesion</span>
+                        </span>
+                    </button>
+                </li>
+            </ul>
+        </header>
+
+        <!-- Aquí va el mensaje de bienvenida -->
+        <div id="welcome-message">
+            Cargando...
+        </div>
+
+        <div class="contenedor">
+            <div class="stats-cont">
+                <div class="detalles">
+
+                    <h1>Check List</h1>
+
+                    <p>¡Tu puedes!</p>
+
+                    <div id="progresoBar">
+                        <div id="progreso"></div>
+                    </div>
+                    
+                </div>
+                <div class="stats-num"> 
+                    <p id="num">0 / 0</p>
+                </div>
+            </div>
+
+            <form action="">
+
+                <input type="text" id="taskinput" placeholder="Escribe tu tarea">
+                
+                <button type="submit" class="tarbtn" id="newTask">+</button>
+
+            </form>
+            
+            <ul class="lista-tareas" id="lista-tareas"></ul>
+        </div>
+        
+        <div>
+            <button type="submit" id="guardarbtn" class="guardarbtn">Guardar Progreso del dia</button>
+        </div> 
+
+    </section>
+
+    <script type="module" src="dash.js"></script>
+
+    <script src="firebase-init.js"></script>
+    
+    <script type="module">
+        import { auth } from './firebase-init.js';
+        import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-auth.js";
+    
+        const welcomeDiv = document.getElementById('welcome-message');
+        const logoutBtn = document.getElementById('logout-btn'); // <- esto es necesario
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                welcomeDiv.innerHTML = `Hola, personita 👋<br>
+                <span style="font-size: 1rem; font-weight: 400; color: silver;">${user.email}</span>`;
+
+            } else {
+                window.location.href = 'inicioSesion.html';
+            }
+        });
+
+        logoutBtn.addEventListener('click', async () => {
+            try {
+                await signOut(auth);
+                alert('Sesión cerrada exitosamente');
+                window.location.href = 'IndexBlog.html';
+            } catch (error) {
+                alert('Error al cerrar sesión: ' + error.message);
+            }    
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+</body>
+</html>

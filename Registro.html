@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Proyecto de Vida</title>
+  <link rel="stylesheet" href="header.css" />
+  <link rel="stylesheet" href="style1.css" />
+</head>
+<body>
+  <section>
+    <div class="circulo"></div>
+    <div class="circulo2"></div>
+
+    <header>
+      <a href="#" class="logo"><img src="logoh.jpeg" alt="Logotipo de la pagina" width="150px" /></a>
+      <ul>
+        <li><a href="IndexBlog.html">Inicio</a></li>
+        <li><a href="#">Como usarlo</a></li>
+        <li><a href="#">Historias de exito</a></li>
+      </ul>
+    </header>
+
+    <div class="formulario">
+      <h1>Registrarse</h1>
+      <form id="registro-form">
+        <div class="username">
+          <input type="email" id="email" required />
+          <label for="email">Correo electronico</label>
+        </div>
+        <div class="contra">
+          <input type="password" id="password" required />
+          <label for="password">Contraseña</label>
+        </div>
+        <div class="contra">
+          <input type="password" id="password-confirm" required />
+          <label for="password-confirm">Confirmar contraseña</label>
+        </div>
+        <input type="submit" value="Registrar" />
+        <div class="registro">
+          ¿Ya tienes una cuenta?  <a href="InicioSesion.html">Iniciar Sesion</a>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <script type="module">
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-auth.js";
+    import { app } from './firebase-init.js'; // Ajusta la ruta si es necesario
+
+    const auth = getAuth(app);
+    const form = document.getElementById('registro-form');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault(); // Evitar que el formulario recargue la página
+
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const passwordConfirm = document.getElementById('password-confirm').value.trim();
+
+      if (!email || !password || !passwordConfirm) {
+        alert("Por favor completa todos los campos.");
+        return;
+      }
+
+      if (password !== passwordConfirm) {
+        alert("Las contraseñas no coinciden.");
+        return;
+      }
+
+      try {
+        await createUserWithEmailAndPassword(auth, email, password);
+        alert("Usuario registrado con éxito.");
+        window.location.href = 'InicioSesion.html'; // Redirige al login
+      } catch (error) {
+        alert("Error al registrar usuario: " + error.message);
+      }
+    });
+  </script>
+</body>
+</html>

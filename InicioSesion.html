@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Proyecto de Vida</title>
+  <link rel="stylesheet" href="header.css" />
+  <link rel="stylesheet" href="style1.css" />
+</head>
+<body>
+  <section>
+    <div class="circulo"></div>
+    <div class="circulo2"></div>
+        
+    <header>
+      <a href="#" class="logo"><img src="logoh.jpeg" alt="Logotipo de la pagina" width="150px" /></a>
+      <ul>
+        <li><a href="IndexBlog.html">Inicio</a></li>
+        <li><a href="#">Como usarlo</a></li>
+        <li><a href="#">Historias de exito</a></li>
+      </ul>
+    </header>
+
+    <div class="formulario">
+      <h1>Iniciar sesion</h1>
+      <form id="login-form" method="post">
+        <div class="username">
+          <input type="email" id="email" required />
+          <label for="email">Correo electrónico</label>
+        </div>
+        <div class="contra">
+          <input type="password" id="password" required />
+          <label for="password">Contraseña</label>
+        </div>
+        <input type="submit" value="Iniciar" />
+        <div class="registro">
+          Quiero hacer el <a href="Registro.html">registro</a>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <script type="module">
+    import { auth } from './firebase-init.js'; // Cambia la ruta si es necesario
+    import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-auth.js";
+
+    const form = document.getElementById('login-form');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      if (!email || !password) {
+        alert("Por favor completa todos los campos.");
+        return;
+      }
+
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        alert("Inicio de sesión exitoso.");
+        window.location.href = 'Dashboard.html'; // Página a donde quieres redirigir
+      } catch (error) {
+        alert("Error al iniciar sesión: " + error.message);
+      }
+    });
+  </script>
+</body>
+</html>
