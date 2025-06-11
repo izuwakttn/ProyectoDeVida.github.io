@@ -15,7 +15,7 @@
             
             <ul>
                 <li>
-                    <a href="#">Como usarlo</a>
+                    <a href="ComoUsarlo.html">Como usarlo</a>
                 </li>
                 <li>
                     <a href="Dashboard.html">Realizar Reporte</a>
@@ -41,46 +41,46 @@
         </div>
 
 
-         <div class="container">
-      <div class="calendar">
-        <div class="calendar-header">
-          <span class="month-picker" id="month-picker"> May </span>
-          <div class="year-picker" id="year-picker">
-            <span class="year-change" id="pre-year">
-              <pre><</pre>
-            </span>
-            <span id="year">2020 </span>
-            <span class="year-change" id="next-year">
-              <pre>></pre>
-            </span>
-          </div>
-        </div>
+        <div class="container">
+          <div class="calendar">
+            <div class="calendar-header">
+              <span class="month-picker" id="month-picker"> May </span>
+              <div class="year-picker" id="year-picker">
+                <span class="year-change" id="pre-year">
+                  <pre><</pre>
+                </span>
+                <span id="year">2020 </span>
+                <span class="year-change" id="next-year">
+                  <pre>></pre>
+                </span>
+              </div>
+            </div>
  
-        <div class="calendar-body">
-          <div class="calendar-week-days">
-            <div>Sun</div>
-            <div>Mon</div>
-            <div>Tue</div>
-            <div>Wed</div>
-            <div>Thu</div>
-            <div>Fri</div>
-            <div>Sat</div>
+          <div class="calendar-body">
+              <div class="calendar-week-days">
+                <div>Dom</div>
+                <div>Lun</div>
+                <div>Mar</div>
+                <div>Mie</div>
+                <div>Jue</div>
+                <div>Vie</div>
+                <div>Sab</div>
+              </div>
+              <div class="calendar-days">
+              </div>
           </div>
-          <div class="calendar-days">
+          <div class="calendar-footer">
           </div>
-        </div>
-        <div class="calendar-footer">
-        </div>
-        <div class="date-time-formate">
-          <div class="day-text-formate">TODAY</div>
-          <div class="date-time-value">
-            <div class="time-formate">02:51:20</div>
-            <div class="date-formate">23 - july - 2022</div>
+          <div class="date-time-formate">
+            <div class="day-text-formate">HOY</div>
+            <div class="date-time-value">
+              <div class="time-formate">02:51:20</div>
+              <div class="date-formate">23 - july - 2022</div>
+            </div>
           </div>
+          <div class="month-list"></div>
         </div>
-        <div class="month-list"></div>
-      </div>
-    </div>
+        </div>
     </section>
 
     <!-- Firebase y lógica de sesión -->
@@ -96,8 +96,8 @@
 
     onAuthStateChanged(auth, (user) => {
         if (user) {
-            welcomeDiv.innerHTML = `Hola, personita 👋<br>
-            <span style="font-size: 1rem; font-weight: 400; color: silver;">${user.email}</span>`;
+            welcomeDiv.innerHTML = `Hola, veamos tu progreso👋<br>
+            <span style="font-size: 1rem; font-weight: 400; color: #98cbb7;">${user.email}</span>`;
         } else {
             window.location.href = 'inicioSesion.html';
         }

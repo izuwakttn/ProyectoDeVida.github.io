@@ -26,9 +26,12 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #fff;
+  background:linear-gradient(to bottom, #b6ded0, #e8faf3);
   place-items: center;
   overflow: hidden;
+}
+header{
+  background: #fff;
 }
 
   .container {
@@ -305,3 +308,10 @@ section {
         margin: 5px 0px;
       }
     }
+
+#welcome-message {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}

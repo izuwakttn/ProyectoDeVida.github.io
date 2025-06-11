@@ -9,17 +9,14 @@
 </head>
 <body>
     <input type="checkbox" id="internoCompleto" style="display: none;">
-
     <section>
-
-        <div class="circulo"></div>
         
         <header>
             <a href="#" class="logo"><img src="logoh.jpeg" alt="Logotipo de la pagina" width="150px"/></a>
             
             <ul>
                 <li>
-                    <a href="#">Como usarlo</a>
+                    <a href="ComoUsarlo.html">Como usarlo</a>
                 </li>
                 <li>
                     <a href="Dashboard.html">Realizar Reporte</a>
@@ -93,7 +90,7 @@
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 welcomeDiv.innerHTML = `Hola, personita 👋<br>
-                <span style="font-size: 1rem; font-weight: 400; color: silver;">${user.email}</span>`;
+                <span style="font-size: 1rem; font-weight: 400; color: #98cbb7;">${user.email}</span>`;
 
             } else {
                 window.location.href = 'inicioSesion.html';

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto de Vida</title>
+    <link rel="stylesheet" href="header.css" />
+    <link rel="stylesheet" href="style4.css" />
+</head>
+<body>
+    <section>
+
+        <header>
+            <a href="#" class="logo"><img src="logoh.jpeg" alt="Logotipo de la pagina" width="150px"/></a>
+            
+            <ul>
+                <li>
+                    <a href="ComoUsarlo.html">Como usarlo</a>
+                </li>
+                <li>
+                    <a href="Dashboard.html">Realizar Reporte</a>
+                </li>
+                <li>
+                    <a href="Calendar.html">Calendario de Racha</a>
+                </li>
+
+                <li>
+                    <button class="button" id="logout-btn">
+                        <span class="button_lg">
+                            <span class="button_sl"></span>
+                            <span class="button_text">Cerrar Sesion</span>
+                        </span>
+                    </button>
+                </li>
+            </ul>
+        </header>
+
+        <div class="Instrucciones">
+            <h1>¿Como usar nuestra pagina web? Proyecto de vida</h1>
+            <br><br>
+
+            <h2>Paso 1:</h2>
+            <p>Una vez que inicies sesion, apareceras en la seccion Realizar reporte</p>
+            <br>
+            <img src="checklist.png" alt="" width="400px">
+            <br>
+            <p>En esta sección podrás gestionar tus tareas diarias de manera fácil y eficiente:</p>
+            <br>
+            <p>✔ Agregar nuevas actividades que necesites completar.</p>
+            <p>✔ Editar o eliminar tareas en cualquier momento.</p>
+            <p>✔ Marcar como completadas las actividades que hayas finalizado.</p>
+            <p>✔ Ver tu progreso en tiempo real y mantener la motivación.</p>
+            <br>
+            <img src="checklist1.png" width="400px">
+            
+            <br><br>
+            <h2>Paso 2:</h2>
+            <p>Revisa tu progreso en el Calendario de Racha!</p>
+            <br>
+            <p>En esta sección podrás visualizar tu consistencia diaria de manera intuitiva:</p> <br>
+            <p>✅ Emojis que motivan:</p>
+            <p>- ⭐ (Estrella): Días donde completaste TODAS tus tareas.</p>
+            <p>- 😞 (Cara triste): Días donde quedaron tareas pendientes.</p>
+            <p>- Solo número: Días sin registro de actividades.</p>
+            <br>
+            <p>✅ Funcionalidades clave:</p>
+            <p>- Navegación entre meses/años: Usa los botones <  y > para cambiar de mes o año.</p>
+            <p>- Fecha actual resaltada: El día de hoy aparece en color verde para identificarlo fácilmente.</p>
+            <p>- Registro automático: Los emojis se actualizan automáticamente al guardar tu progreso en Realizar Reporte.</p>
+            <br>
+            <img src="calendarr.png" alt="" width="400px">
+            <br>
+            📌 Tip: ¡Mantén una racha de estrellas para construir hábitos sólidos!
+
+            <br><br>
+            <h1>Y listo! Ya puedes hacer uso de esta pagina web</h1>
+        </div>
+    </section>
+
+    <!-- Firebase y lógica de sesión -->
+    <script type="module" src="firebase-init.js"></script>
+
+    <!-- Lógica de bienvenida y cerrar sesión -->
+    <script type="module">
+    import { auth } from './firebase-init.js';
+    import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-auth.js";
+
+    const welcomeDiv = document.getElementById('welcome-message');
+    const logoutBtn = document.getElementById('logout-btn');
+
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            welcomeDiv.innerHTML = `Hola, personita 👋<br>
+            <span style="font-size: 1rem; font-weight: 400; color: silver;">${user.email}</span>`;
+        } else {
+            window.location.href = 'inicioSesion.html';
+        }
+    });
+
+    logoutBtn.addEventListener('click', async () => {
+        try {
+            await signOut(auth);
+            alert('Sesión cerrada exitosamente');
+            window.location.href = 'Index.html';
+        } catch (error) {
+            alert('Error al cerrar sesión: ' + error.message);
+        }
+    });
+    </script>
+
+</body>
+</html>

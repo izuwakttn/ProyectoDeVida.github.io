@@ -24,8 +24,8 @@ const getFebDays = (year) => {
 
 let calendar = document.querySelector('.calendar');
 const month_names = [
-  'January', 'February', 'March', 'April', 'May', 'June',
-  'July', 'August', 'September', 'October', 'November', 'December',
+  'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+  'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre',
 ];
 
 let month_picker = document.querySelector('#month-picker');
@@ -205,7 +205,7 @@ const showCurrentDateOption = {
   weekday: 'long',
 };
 const currentDateFormate = new Intl.DateTimeFormat(
-  'en-US',
+  'es-mx',
   showCurrentDateOption
 ).format(currshowDate);
 todayShowDate.textContent = currentDateFormate;
@@ -217,7 +217,7 @@ setInterval(() => {
     minute: 'numeric',
     second: 'numeric',
   };
-  const formateTimer = new Intl.DateTimeFormat('en-us', option).format(timer);
+  const formateTimer = new Intl.DateTimeFormat('es-mx', option).format(timer);
   todayShowTime.textContent = formateTimer;
 }, 1000);
 
